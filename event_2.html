@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p id="demo">按這裡，由 DOM 觸發 JS</p>
+    <div class="con">
+        <button onclick="add()">按這裡由 HTML 觸發 JS</button>
+    </div>
+
+    <script>
+        function add() {
+            let btn = document.createElement('button');
+            btn.textContent = 'JS';
+            // document.body.appendChild(btn);
+            document.querySelector('.con').appendChild(btn);
+        }
+        var say = function() {
+            console.log('hi');
+            return "yee";
+        }();
+        // 等號右側執行後會回傳 yee，所以右側等於結果出現了文字，能指定給左側變數
+        typeof(say); //say 為文字串 yee 的已存在變數
+
+        // function room() {
+        //     // console.log('hi');
+        //     console.log(this.obj); //印出這個世界下，this 物件內的變數 word 內容為何
+        // }
+        // var word = 'A';
+        // var obj = {
+        //     word: 'B',
+        //     first: room,
+        //     second: {
+        //         word: 'C',
+        //         goto: room
+        //     }
+        // }
+
+        obj = {
+                a: 123,
+                b: 456
+            } //字串可+''可不+
+        console.log(obj.a, obj['b']);
+
+        a = '5';
+        b = 100;
+        console.log(a + 3 + b);
+        console.log(a + (3 + b));
+        console.log(Number(a) + 3 + String(b));
+
+        Math.round(6.4); //四捨五入
+        Math.ceil(6.4); //無條件進
+        Math.floor(6.4); //無條件捨
+        Math.random(); //隨機 0<x<1 之浮點數
+        Math.floor(Math.random() * 15); //利用變 15 倍，得到 0<x<15 之間浮點數，在無條件捨去得到 0~14 隨機整數
+
+        /*如果想要範圍 50~80
+          =>Math.floor(Math.random()*31); 0~30
+          =>Math.floor(Math.random()*31)+50; //50~80
+          =>寫成 FUNCTION
+        */
+        function myrand(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min; //做出在min~max內的隨機數
+        }
+    </script>
+
+</body>
+
+</html>

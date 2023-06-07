@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>count</title>
+    <style>
+        .show {
+            display: none;
+            width: 250px;
+            height: 50px;
+            background-color: #009688;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            text-align: center;
+            line-height: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="show">
+
+    </div>
+    <ul>
+        <li>單價:<span class="s_price">10.1</span></li>
+        <li>總價:<span class="t_price"></span></li>
+        <li>數量:
+            <input id="dec" class="btn btn_count" type="button" value="-">
+            <input id="count" type="text" value="2" />
+            <input id="inc" class="btn btn_count" type="button" value="+">
+        </li>
+    </ul> -->
+    <!-- <p>單價：1.23</p> -->
+    <input id="min" name="" type="button" value="-" />
+    <input id="count" name="" type="text" value="2" />
+    <input id="add" name="" type="button" value="+" />
+    <!-- <p>總價：<label id="total"></label></p> -->
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
+    <script>
+        // $(function() {
+        //     //獲取數量
+        //     var num = $('#count').val();
+        //     //獲取單價    
+        //     var unitPrice = $('.s_price').text();
+        //     //計算總價
+        //     function count() {
+        //         $('.t_price').text((num * unitPrice).toFixed(2));
+        //     }
+        //     //點擊加或者減的時候，實現加減的操作
+        //     //點擊減
+        //     $('#dec').click(function() {
+        //             num--;
+        //             if (num < 2) {
+        //                 $(".show").show().html("數量不能小於2").delay(600).hide(500);
+        //                 $("#dec").attr("disabled", "disabled");
+        //             } else {
+        //                 $('#count').val(num);
+        //                 count();
+        //             }
+
+        //         })
+        //         //點擊加
+        //     $('#inc').click(function() {
+        //         num++;
+        //         if (num > 4) {
+        //             $(".show").show().html("數量不能大於4").delay(600).hide(500);
+        //             $("#inc").attr("disabled", "disabled")
+        //         } else {
+        //             $('#count').val(num);
+        //             count();
+        //         }
+
+        //     })
+
+        //     //鍵盤事件
+        //     $('#count').keyup(function() {
+        //         num = $(this).val();
+        //         var res = /^[1-9]\d*$/
+        //         if (res.test(num)) {
+        //             count();
+        //         } else {
+        //             $(this).val(1);
+        //             $(".show").show().html("輸入不合法").delay(1000).hide(500);
+        //             count();
+        //         }
+
+        //     })
+        // })
+
+        $(function() {
+            let count = document.querySelector('#count');
+            $("#add").click(function() {
+                if (parseInt(count.value) < 3) {
+                    count.value = parseInt(count.value) + 1;
+                    $("#min").removeAttr("disabled");
+                } else {
+                    count.value = parseInt(count.value) + 1;
+                    $("#add").attr("disabled", "disabled");
+                }
+
+                //當按加1時，解除$("#min")不可讀狀態
+                // setTotal();
+            })
+            $("#min").attr("disabled", "disabled");
+            $("#min").click(function() {
+                if (parseInt(count.value) > 3) { //判斷數量值大於2時才可以減少
+                    count.value = parseInt(count.value) - 1;
+                    $("#add").removeAttr("disabled");
+                } else {
+                    count.value = parseInt(count.value) - 1;
+                    $("#min").attr("disabled", "disabled"); //當$("#min")為1時，$("#min")不可讀狀態
+                }
+                // setTotal();
+            })
+
+            // function setTotal() {
+            //     $("#total").html((parseInt(t.val()) * 3.95).toFixed(2));
+            // }
+            // setTotal();
+        })
+    </script>
+</body>
+
+</html>
